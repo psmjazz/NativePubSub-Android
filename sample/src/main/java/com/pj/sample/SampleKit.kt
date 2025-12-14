@@ -12,7 +12,7 @@ import com.minisdk.pubsub.data.Topic
 data class ToastData(val toastMessage: String, val toastDuration: Int)
 data class ToastResult(val toastCount: Int)
 
-object SampleKit {
+class SampleKit {
     private val TAG = SampleKit::class.java.name
 
     private val messenger : Messenger = Messenger()
@@ -20,9 +20,10 @@ object SampleKit {
 
     init {
         Log.d(TAG, "[pubsubtest] SampleKit init")
+        prepare()
     }
 
-    fun prepare(){
+    private fun prepare(){
         Log.d(TAG, "!!!! SampleKit.prepare: run?")
         messenger.subscribe("SEND_TOAST", this::onToast)
         messenger.subscribe("SEND_TOAST_ASYNC", this::onToastAsync)
